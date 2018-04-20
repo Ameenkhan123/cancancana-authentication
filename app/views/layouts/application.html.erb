@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cancancana</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <% if patient_signed_in? %>
+  Your Email<br><%= current_patient.email%>
+  <li>
+  <%= link_to('Logout', destroy_patient_session_path, method: :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_patient_session_path)  %>  
+   <%= link_to('Register', new_patient_registration_path)  %>
+  </li>
+<% end %>
+   <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>

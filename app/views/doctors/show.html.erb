@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @doctor.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @doctor.lname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @doctor.email %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @doctor.contact %>
+</p>
+<%if can? :update,  @doctor%>
+<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
+<%end%>
+<%= link_to 'Back', doctors_path %>

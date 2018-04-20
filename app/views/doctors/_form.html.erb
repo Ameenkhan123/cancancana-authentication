@@ -1,0 +1,39 @@
+<%= form_with(model: doctor, local: true) do |form| %>
+<% if doctor.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
+
+  <ul>
+    <% doctor.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= form.label :fname %>
+  <%= form.text_field :fname, id: :doctor_fname %>
+</div>
+
+<div class="field">
+  <%= form.label :lname %>
+  <%= form.text_field :lname, id: :doctor_lname %>
+</div>
+
+<div class="field">
+  <%= form.label :email %>
+  <%= form.text_field :email, id: :doctor_email %>
+</div>
+
+<div class="field">
+  <%= form.label :contact %>
+  <%= form.text_field :contact, id: :doctor_contact %>
+</div>
+ <% if  current_patient %>
+  <%= form.hidden_field :patient_id, :value => current_patient.id, doctor: true%>
+  <% end %>
+<div class="actions">
+  <%= form.submit %>
+</div>
+<% end %>
